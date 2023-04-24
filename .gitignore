@@ -3,6 +3,7 @@
 **/debug/
 **/target/**
 /target/**
+/target/
 **/target/**
 mod-organize/target/**
 adder/target/**
@@ -23,3 +24,11 @@ adder/target/.rustc_info.json
 adder/target/.rustc_info.json
 .gitignore
 communicator/target/.rustc_info.json
+mod-organize/target/.rustc_info.json
+.gitignore
+lifetime_generics/target/.rustc_info.json
+.gitignore
+error-handling/target/.rustc_info.json
+communicator/target/.rustc_info.json
+.gitignore
+adder/target/.rustc_info.json
