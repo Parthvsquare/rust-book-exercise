@@ -1,3 +1,4 @@
+use std::env;
 use std::error::Error;
 use std::fs::File;
 use std::io::prelude::*;
@@ -5,6 +6,7 @@ use std::io::prelude::*;
 pub struct Config<'a> {
     pub query: &'a String,
     pub filename: &'a String,
+    pub case_sensitive: bool,
 }
 
 impl Config<'_> {
@@ -12,10 +14,16 @@ impl Config<'_> {
         if args.len() < 3 {
             return Err("Not Enough Parameter");
         }
+        let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
+
         let query = &args[1];
         let filename = &args[2];
 
-        Ok(Config { query, filename })
+        Ok(Config {
+            query,
+            filename,
+            case_sensitive,
+        })
     }
 
     pub fn run(&self) -> Result<(), Box<dyn Error>> {
@@ -24,7 +32,13 @@ impl Config<'_> {
 
         f.read_to_string(&mut contents)?;
 
-        for line in search(&self.query, &contents) {
+        let result = if self.case_sensitive {
+            search(&self.query, &contents)
+        } else {
+            search_case_insensitive(&self.query, &contents)
+        };
+
+        for line in result {
             println!("{}", line)
         }
 
@@ -37,6 +51,19 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
 
     for line in contents.lines() {
         if line.contains(query) {
+            result.push(line);
+        }
+    }
+
+    result
+}
+
+pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let query = query.to_lowercase();
+    let mut result = Vec::new();
+
+    for line in contents.lines() {
+        if line.to_lowercase().contains(&query) {
             result.push(line);
         }
     }
