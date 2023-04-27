@@ -57,3 +57,12 @@ fn generate_workout(intensity: u32, random_number: u32) {
         }
     }
 }
+
+// problem with our closer method, we should have used hash map
+#[test]
+fn call_with_different_value() {
+    let mut c = Cacher::new(|a| a);
+    let _v1 = c.value(1);
+    let v2 = c.value(2);
+    assert_eq!(v2, 2);
+}
