@@ -1,0 +1,17 @@
+[workspace]
+
+members = [
+  "adder",
+  "cap8-vector",
+  "closures",
+  "communicator",
+  "enum_and_pattern",
+  'error_handling",
+  "generic_types",
+  "guessing_game",
+  "iterators",
+  "lifetime_generics",
+  "minigrep",
+  "mod-organize",
+  "traits_impl"
+]
