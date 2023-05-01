@@ -6,7 +6,7 @@ members = [
   "closures",
   "communicator",
   "enum_and_pattern",
-  'error_handling",
+  "error-handling",
   "generic_types",
   "guessing_game",
   "iterators",
