@@ -13,5 +13,7 @@ members = [
   "lifetime_generics",
   "minigrep",
   "mod-organize",
-  "traits_impl"
+  "traits_impl",
+  "smart_pointers",
+  "reference_cycle"
 ]
