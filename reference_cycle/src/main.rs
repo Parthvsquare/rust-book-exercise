@@ -1,3 +1,5 @@
+use reference_cycle::weak_reference;
+
 use crate::List::{Cons, Nil};
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -18,6 +20,10 @@ impl List {
 }
 
 fn main() {
+    weak_reference();
+}
+
+fn reference_cycle_hell() {
     let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
 
     println!("a initial rc count = {}", Rc::strong_count(&a));
