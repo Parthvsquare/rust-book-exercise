@@ -15,5 +15,8 @@ members = [
   "mod-organize",
   "traits_impl",
   "smart_pointers",
-  "reference_cycle"
+  "reference_cycle",
+  "fearless_concurrency",
+  "pattern_and_matching",
+  "small-web-server"
 ]
